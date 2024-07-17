@@ -1,0 +1,13 @@
+{
+  "name": "startup-monorepo",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.5.3"
+  }
+}
