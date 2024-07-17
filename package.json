@@ -1,17 +1,15 @@
 {
-  "name": "startup-monorepo",
-  "type": "module",
-  "private": true,
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
-  "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@types/bun": "latest",
-    "typescript": "^5.5.3"
-  },
-  "trustedDependencies": [
-    "@biomejs/biome"
-  ]
+	"name": "startup-monorepo",
+	"type": "module",
+	"private": true,
+	"workspaces": ["packages/*", "apps/*"],
+	"scripts": {
+		"lint": "npx @biomejs/biome check --write ./"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@types/bun": "latest",
+		"typescript": "^5.5.3"
+	},
+	"trustedDependencies": ["@biomejs/biome", "core-js"]
 }
