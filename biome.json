@@ -9,6 +9,9 @@
 			"recommended": true
 		}
 	},
+	"formatter": {
+		"lineWidth": 120
+	},
 	"files": {
 		"ignore": ["node_modules", ".next", "./apps/web/public"]
 	}

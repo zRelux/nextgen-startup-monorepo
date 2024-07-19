@@ -1,0 +1,4 @@
+{
+	"name": "@monorepo/analytics",
+	"main": "index.ts"
+}
