@@ -1,3 +1,6 @@
+import type { MyCustomType } from "@monorepo/types";
+
 export default eventHandler((event) => {
-  return "Start by editing <code>server/routes/index.ts</code>.";
+	const c: MyCustomType = "Ciao";
+	return c;
 });

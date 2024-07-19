@@ -1,3 +1,10 @@
 # nextgen-startup-monorepo
 
-An opinionated repository to kickstart your next startup
+An opinionated repository to kickstart your next startup.
+
+
+# Init steps
+1. Clone Repo
+
+
+... https://github.com/bndkt/react-native-app-clip?tab=readme-ov-file#before-building-for-the-app-store

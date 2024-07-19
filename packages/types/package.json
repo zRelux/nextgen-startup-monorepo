@@ -1,4 +1,9 @@
 {
 	"name": "@monorepo/types",
-	"main": "index.ts"
+	"version": "1.0.0",
+	"main": "index.ts",
+	"scripts": {
+		"type:check": "tsc --noEmit",
+		"lint:check": "bunx @biomejs/biome lint ."
+	}
 }

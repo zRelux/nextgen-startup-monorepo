@@ -50,22 +50,13 @@ function Header() {
 					<Text>ACME</Text>
 				</Link>
 				<View className="flex flex-row gap-4 sm:gap-6">
-					<Link
-						className="text-md font-medium hover:underline web:underline-offset-4"
-						href="/"
-					>
+					<Link className="text-md font-medium hover:underline web:underline-offset-4" href="/">
 						<Text>About</Text>
 					</Link>
-					<Link
-						className="text-md font-medium hover:underline web:underline-offset-4"
-						href="/"
-					>
+					<Link className="text-md font-medium hover:underline web:underline-offset-4" href="/">
 						<Text>Product</Text>
 					</Link>
-					<Link
-						className="text-md font-medium hover:underline web:underline-offset-4"
-						href="/"
-					>
+					<Link className="text-md font-medium hover:underline web:underline-offset-4" href="/">
 						<Text>Pricing</Text>
 					</Link>
 				</View>
@@ -77,14 +68,9 @@ function Header() {
 function Footer() {
 	const { bottom } = useSafeAreaInsets();
 	return (
-		<View
-			className="flex shrink-0 bg-gray-100 native:hidden"
-			style={{ paddingBottom: bottom }}
-		>
+		<View className="flex shrink-0 bg-gray-100 native:hidden" style={{ paddingBottom: bottom }}>
 			<View className="py-6 flex-1 items-start px-4 md:px-6 ">
-				<Text className={"text-center text-gray-700"}>
-					© {new Date().getFullYear()} Me
-				</Text>
+				<Text className={"text-center text-gray-700"}>© {new Date().getFullYear()} Me</Text>
 			</View>
 		</View>
 	);

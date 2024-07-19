@@ -6,13 +6,19 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"correctness": {
+				"noUnusedImports": {
+					"level": "error",
+					"fix": "unsafe"
+				}
+			}
 		}
 	},
 	"formatter": {
 		"lineWidth": 120
 	},
 	"files": {
-		"ignore": ["node_modules", ".next", "./apps/web/public"]
+		"ignore": ["node_modules", ".next", "./apps/web/public", ".nitro", ".output", "ios", "android"]
 	}
 }

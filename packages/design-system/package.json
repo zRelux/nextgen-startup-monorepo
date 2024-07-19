@@ -1,20 +1,24 @@
 {
 	"name": "@monorepo/design-system",
-	"scripts": {},
+	"version": "1.0.0",
+	"scripts": {
+		"type:check": "tsc --noEmit",
+		"lint:check": "bunx @biomejs/biome lint ."
+	},
 	"files": ["./globals.css", "./*.ts"],
 	"exports": {
-	  ".": {
-		"import": "./index.ts",
-		"require": "./index.ts"
-	  },
-	  "./style.css": {
-		"import": "./global.css",
-		"require": "./global.css"
-	  },
-	  "./tailwind": {
-		"import": "./tailwind.config.ts",
-		"require": "./tailwind.config.ts"
-	  }
+		".": {
+			"import": "./index.ts",
+			"require": "./index.ts"
+		},
+		"./style.css": {
+			"import": "./global.css",
+			"require": "./global.css"
+		},
+		"./tailwind": {
+			"import": "./tailwind.config.ts",
+			"require": "./tailwind.config.ts"
+		}
 	},
 	"dependencies": {
 		"@radix-ui/react-progress": "^1.0.3",

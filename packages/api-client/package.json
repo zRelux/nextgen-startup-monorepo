@@ -1,14 +1,17 @@
 {
-  "name": "@monorepo/api-client",
-  "main": "index.ts",
-  "scripts": {
-    "build:schema": "bunx openapi-typescript http://localhost:3000/_nitro/openapi.json -o ./schema.d.ts"
-  },
-  "devDependencies": {
-    "openapi-typescript": "^7.0.4",
-    "typescript": "^5.5.3"
-  },
-  "dependencies": {
-    "openapi-fetch": "^0.10.2"
-  }
+	"name": "@monorepo/api-client",
+	"version": "1.0.0",
+	"main": "index.ts",
+	"scripts": {
+		"build:schema": "bunx openapi-typescript http://localhost:3000/_nitro/openapi.json -o ./schema.d.ts",
+		"type:check": "tsc --noEmit",
+		"lint:check": "bunx @biomejs/biome lint ."
+	},
+	"devDependencies": {
+		"openapi-typescript": "^7.0.4",
+		"typescript": "^5.5.3"
+	},
+	"dependencies": {
+		"openapi-fetch": "^0.10.2"
+	}
 }

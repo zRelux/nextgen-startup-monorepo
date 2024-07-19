@@ -1,13 +1,21 @@
 {
-  "name": "@monorepo/bff",
-  "private": true,
-  "scripts": {
-    "build": "nitro build",
-    "dev": "nitro dev",
-    "prepare": "nitro prepare",
-    "preview": "node .output/server/index.mjs"
-  },
-  "devDependencies": {
-    "nitropack": "latest"
-  }
+	"name": "@monorepo/bff",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"build": "nitro build",
+		"dev": "nitro dev",
+		"prepare": "nitro prepare",
+		"preview": "node .output/server/index.mjs",
+		"type:check": "tsc --noEmit",
+		"lint:check": "bunx @biomejs/biome lint ."
+	},
+	"dependencies": {
+		"@monorepo/types": "workspace:*",
+		"@monorepo/analytics": "workspace:*",
+		"@monorepo/translations": "workspace:*"
+	},
+	"devDependencies": {
+		"nitropack": "latest"
+	}
 }
