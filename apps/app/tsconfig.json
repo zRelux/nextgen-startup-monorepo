@@ -3,9 +3,8 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"],
-			"~/*": ["*"]
+			"@/*": ["./src/*", "../../packages/design-system/*"]
 		}
 	},
-	"include": ["**/*.ts", "**/*.tsx", "index.js", "nativewind-end.d.ts"]
+	"include": ["**/*.ts", "**/*.tsx", "index.io.jss.js", "nativewind-end.d.ts"]
 }

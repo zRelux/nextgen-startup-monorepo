@@ -8,7 +8,13 @@ export default {
 			bundler: "metro",
 		},
 		plugins: [
-			["react-native-app-clip", { "name": "App Clip" }],
+			[
+				"expo-dev-launcher",
+				{
+					launchMode: "most-recent",
+				},
+			],
+			["react-native-app-clip", { name: "App Clip" }],
 			[
 				"@bittingz/expo-widgets",
 				{

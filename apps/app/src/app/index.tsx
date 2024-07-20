@@ -1,6 +1,18 @@
-import { Button } from "@monorepo/design-system";
+import {
+	AlertDialog,
+	AlertDialogBackdrop,
+	AlertDialogBody,
+	AlertDialogContent,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	Button,
+	ButtonText,
+	Heading,
+	Text,
+} from "@monorepo/design-system";
 import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { useState } from "react";
+import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Page() {
@@ -14,6 +26,8 @@ export default function Page() {
 }
 
 function Content() {
+	const [showAlertDialog, setShowAlertDialog] = useState(false);
+	const handleClose = () => setShowAlertDialog(false);
 	return (
 		<View className="flex-1">
 			<View className="py-12 md:py-24 lg:py-32 xl:py-48">
@@ -25,18 +39,41 @@ function Content() {
 						>
 							Welcome to Project ACME
 						</Text>
-						<Text className="mx-auto max-w-[700px] text-lg text-center text-gray-500 md:text-xl dark:text-gray-400">
+						<Text className="mx-auto max-w-[700px] text-lg text-center text-gray-500 md:text-xl sm:text-blue-500">
 							Discover and collaborate on amce. Explore our services now.
 						</Text>
 
 						<View className="gap-4">
-							<Button>
-								<Text className="text-white">Explore</Text>
+							<Button size="md" variant="solid" action="primary" onPress={() => setShowAlertDialog(true)}>
+								<ButtonText>Hello World!</ButtonText>
 							</Button>
 						</View>
 					</View>
 				</View>
 			</View>
+			<AlertDialog isOpen={showAlertDialog} onClose={handleClose} size="md">
+				<AlertDialogBackdrop />
+				<AlertDialogContent>
+					<AlertDialogHeader>
+						<Heading className="text-typography-950 font-semibold" size="md">
+							Are you sure you want to delete this post?
+						</Heading>
+					</AlertDialogHeader>
+					<AlertDialogBody className="mt-3 mb-4">
+						<Text size="sm">
+							Deleting the post will remove it permanently and cannot be undone. Please confirm if you want to proceed.
+						</Text>
+					</AlertDialogBody>
+					<AlertDialogFooter className="">
+						<Button variant="outline" action="secondary" onPress={handleClose} size="sm">
+							<ButtonText>Cancel</ButtonText>
+						</Button>
+						<Button size="sm" onPress={handleClose}>
+							<ButtonText>Delete</ButtonText>
+						</Button>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
 		</View>
 	);
 }
