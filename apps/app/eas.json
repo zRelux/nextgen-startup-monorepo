@@ -1,0 +1,69 @@
+{
+	"cli": {
+		"version": ">= 2.1.0",
+		"appVersionSource": "local"
+	},
+	"build": {
+		"development": {
+			"node": "20.6.1",
+			"developmentClient": true,
+			"distribution": "internal",
+			"env": {
+				"ENVIRONMENT": "local"
+			},
+			"channel": "staging",
+			"android": {
+				"gradleCommand": ":app:assembleDebug"
+			},
+			"ios": {
+				"buildConfiguration": "Debug"
+			}
+		},
+		"staging": {
+			"node": "20.6.1",
+			"channel": "staging",
+			"env": {
+				"ENVIRONMENT": "staging"
+			}
+		},
+		"production": {
+			"node": "20.6.1",
+			"env": {
+				"ENVIRONMENT": "production"
+			},
+			"channel": "production"
+		}
+	},
+	"submit": {
+		"development": {
+			"android": {
+				"track": "internal"
+			},
+			"ios": {
+				"appleId": "",
+				"ascAppId": "",
+				"appleTeamId": ""
+			}
+		},
+		"staging": {
+			"android": {
+				"track": "internal"
+			},
+			"ios": {
+				"appleId": "",
+				"ascAppId": "",
+				"appleTeamId": ""
+			}
+		},
+		"production": {
+			"android": {
+				"track": "internal"
+			},
+			"ios": {
+				"appleId": "",
+				"ascAppId": "",
+				"appleTeamId": ""
+			}
+		}
+	}
+}
