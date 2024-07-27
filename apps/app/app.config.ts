@@ -103,7 +103,7 @@ export const createAppConfig = ({
 	const configToUse = process.env.EAS_BUILD_PROFILE ? configs[process.env.EAS_BUILD_PROFILE] : null;
 
 	if (!configToUse) {
-		return "Error";
+		return config;
 	}
 
 	return {
