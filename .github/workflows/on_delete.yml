@@ -1,0 +1,43 @@
+name: Branch Deleted
+on: delete
+jobs:
+  delete:
+    if: github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 🏗 Setup bun cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
+
+      - name: 📦 Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Get number of commits
+        id: get_number_of_commits
+        run: |
+          echo "BUILD_NUMBER=$(git rev-list --count HEAD)" >> $GITHUB_ENV
+
+      - name: Delete branch on expo after merge
+        run: |
+          cd apps/app
+          eas channel:delete ${{ github.event.ref }} --json --non-interactive
+          eas branch:delete ${{ github.event.ref }} --json --non-interactive
+        env:
+          EAS_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
+          EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
+          BUILD_NUMBER: ${{ env.BUILD_NUMBER }}

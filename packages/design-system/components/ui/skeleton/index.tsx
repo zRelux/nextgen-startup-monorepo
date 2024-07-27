@@ -104,6 +104,7 @@ const SkeletonText = forwardRef(
 					>
 						{Array.from({ length: _lines }).map((_, index) => (
 							<Skeleton
+								// biome-ignore lint/suspicious/noArrayIndexKey: This is a skeleton component
 								key={index}
 								className={`${startColor} ${skeletonTextStyle({
 									class: className,

@@ -1,0 +1,51 @@
+name: "Release PR preview"
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "!main"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 🏗 Setup bun cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
+
+      - name: 📦 Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Get number of commits
+        id: get_number_of_commits
+        run: |
+          echo "BUILD_NUMBER=$(git rev-list --count HEAD)" >> $GITHUB_ENV
+
+      - name: 🚀 Create preview
+        uses: expo/expo-github-action/preview@v8
+        with:
+          command: cd apps/app && eas update --channel "${{ github.head_ref }}" --message "${{ github.event.pull_request.title }}"
+        env:
+          GMAPS_API: ${{ secrets.GMAPS_API }}
+          GOOGLE_SUBSCRIPTION_KEY: ${{ secrets.GOOGLE_SUBSCRIPTION_KEY }}
+          UNSPLASH_API: ${{ secrets.UNSPLASH_API }}
+          WEATHER_API: ${{ secrets.WEATHER_API }}
+          APPLE_SUBSCRIPTION_KEY: ${{ secrets.APPLE_SUBSCRIPTION_KEY }}
+          BUILD_NUMBER: ${{ env.BUILD_NUMBER }}
+          ENVIRONMENT: "staging"

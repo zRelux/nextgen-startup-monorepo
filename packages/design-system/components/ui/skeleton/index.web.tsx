@@ -43,6 +43,7 @@ const SkeletonText = ({
 				>
 					{Array.from({ length: _lines }).map((_, index) => (
 						<div
+							// biome-ignore lint/suspicious/noArrayIndexKey: This is a skeleton component
 							key={index}
 							className={`animate-pulse ${startColor} ${skeletonTextStyle({
 								class: className,

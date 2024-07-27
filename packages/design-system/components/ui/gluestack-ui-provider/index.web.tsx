@@ -21,12 +21,13 @@ export function GluestackUIProvider({
 	children?: any;
 }) {
 	const stringcssvars = Object.keys(config[mode]).reduce((acc, cur) => {
-		acc += `${cur}:${config[mode][cur]};`;
-		return acc;
+		const newAcc = `${acc}${cur}:${config[mode][cur]};`;
+		return newAcc;
 	}, "");
 
 	setFlushStyles(`:root {${stringcssvars}} `);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: Provided by gluestack-ui like this
 	useEffect(() => {
 		if (config[mode] && typeof document !== "undefined") {
 			const element = document.documentElement;

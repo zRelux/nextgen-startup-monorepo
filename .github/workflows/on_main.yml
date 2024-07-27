@@ -1,0 +1,117 @@
+name: Main Branch Checks
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
+
+      - name: 🏗 Setup bun cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run linter
+        run: bun run lint
+
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
+
+      - name: 🏗 Setup bun cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run Type Check
+        run: bun run type:check
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
+
+      - name: 🏗 Setup bun cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run tests
+        run: bun run test
+
+  eas-build:
+    needs: [lint, type-check, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
+
+      - name: 🏗 Setup bun cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
+
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Get number of commits
+        id: get_number_of_commits
+        run: |
+          echo "BUILD_NUMBER=$(git rev-list --count HEAD)" >> $GITHUB_ENV
+
+      - name: Build and Submit APP with EAS
+        run: |
+          cd apps/app
+          eas secret:create --scope project --name ENVIRONMENT --value staging --type string --force
+          eas secret:create --scope project --name BUILD_NUMBER --value ${{ env.BUILD_NUMBER }} --type string --force
+          eas build --platform all --non-interactive --auto-submit --profile staging --no-wait
+        env:
+          EAS_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
+          EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
+
+      - name: Deploy BFF to railway
+        run: railway up --detach
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

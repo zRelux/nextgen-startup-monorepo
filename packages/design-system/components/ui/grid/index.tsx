@@ -77,14 +77,14 @@ function generateResponsiveNumColumns({ gridClass }: { gridClass: string }) {
 	const regex = /^(?:(\w+):)?grid-cols-?(\d+)$/;
 	const result: any = {};
 
-	numColumns.forEach((classname) => {
+	for (const classname of numColumns) {
 		const match = classname.match(regex);
 		if (match) {
 			const prefix = match[1] || "default";
 			const value = Number.parseInt(match[2], 10);
 			result[prefix] = value;
 		}
-	});
+	}
 
 	return result;
 }
@@ -105,14 +105,14 @@ function generateResponsiveColSpans({
 	const regex = /^(?:(\w+):)?col-span-?(\d+)$/;
 	const result: any = {};
 
-	colSpan.forEach((classname: any) => {
+	for (const classname of colSpan) {
 		const match = classname.match(regex);
 		if (match) {
 			const prefix = match[1] || "default";
 			const value = Number.parseInt(match[2], 10);
 			result[prefix] = value;
 		}
-	});
+	}
 
 	return result;
 }
@@ -171,6 +171,7 @@ const Grid = forwardRef(({ className, _extra, children, ...props }: IGridProps, 
 			gap: props?.gap || 0,
 			columnGap: props?.columnGap || 0,
 		};
+		// biome-ignore lint/correctness/useExhaustiveDependencies: Provided like this by design
 	}, [calculatedWidth, itemsPerRow, responsiveNumColumns, props]);
 
 	return (
@@ -223,6 +224,7 @@ const GridItem = forwardRef(({ className, _extra, ...props }: IGridItemProps, re
 	const gridItemClass = _extra?.className;
 	const responsiveColSpan: any = useBreakpointValue(generateResponsiveColSpans({ gridItemClassName: gridItemClass }));
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: Provided like this by design
 	useEffect(() => {
 		if (!flexDirection?.includes("column") && calculatedWidth && numColumns > 0 && responsiveColSpan > 0) {
 			// find out in which row of itemsPerRow the current item's index is

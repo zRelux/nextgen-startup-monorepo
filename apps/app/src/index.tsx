@@ -11,13 +11,13 @@ initSentry();
 
 function App() {
 	return (
-		// <AnalyticsProvider>
-		<GluestackUIProvider>
-			<SafeAreaProvider>
-				<ExpoApp />
-			</SafeAreaProvider>
-		</GluestackUIProvider>
-		// </AnalyticsProvider>
+		<AnalyticsProvider>
+			<GluestackUIProvider>
+				<SafeAreaProvider>
+					<ExpoApp />
+				</SafeAreaProvider>
+			</GluestackUIProvider>
+		</AnalyticsProvider>
 	);
 }
 
