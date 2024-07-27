@@ -1,17 +1,20 @@
-const { getDefaultConfig } = require("expo/metro-config");
 const { withNativeWind } = require("nativewind/metro");
 const path = require("node:path");
+const { getSentryExpoConfig } = require("@sentry/react-native/metro");
 
 const projectRoot = __dirname;
 const monorepoRoot = path.resolve(projectRoot, "../..");
 
-const config = getDefaultConfig(projectRoot);
+const config = getSentryExpoConfig(projectRoot);
 
 config.resolver.nodeModulesPaths = [
 	path.resolve(projectRoot, "node_modules"),
 	path.resolve(monorepoRoot, "node_modules"),
 ];
 
+config.resolver.sourceExts.push("mjs");
+config.resolver.sourceExts.push("cjs");
+
 module.exports = withNativeWind(config, {
-	input: "../../packages/design-system/global.css",
+	input: "./global.css",
 });

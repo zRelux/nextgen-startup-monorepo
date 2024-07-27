@@ -8,3 +8,15 @@ An opinionated repository to kickstart your next startup.
 
 
 ... https://github.com/bndkt/react-native-app-clip?tab=readme-ov-file#before-building-for-the-app-store
+
+
+[your-project-id]
+
+@monorepo
+config
+
+WEBSITE_URL
+
+origin
+
+SENTRY_DSN

@@ -8,14 +8,23 @@
 		"prepare": "nitro prepare",
 		"preview": "node .output/server/index.mjs",
 		"type:check": "tsc --noEmit",
-		"lint:check": "bunx @biomejs/biome lint ."
+		"lint:check": "bunx @biomejs/biome lint .",
+		"studio": "bunx drizzle-kit studio --port 4000"
 	},
 	"dependencies": {
-		"@monorepo/types": "workspace:*",
-		"@monorepo/analytics": "workspace:*",
-		"@monorepo/translations": "workspace:*"
+		"@monorepo/analytics": "*",
+		"@monorepo/translations": "*",
+		"@monorepo/types": "*",
+		"@sentry/node": "^8.19.0",
+		"@sentry/profiling-node": "^8.19.0",
+		"arctic": "^1.9.2",
+		"drizzle-orm": "^0.32.0",
+		"drizzle-zod": "^0.5.1",
+		"lucia": "^3.2.0",
+		"postgres": "^3.4.4"
 	},
 	"devDependencies": {
+		"drizzle-kit": "^0.23.0",
 		"nitropack": "latest"
 	}
 }

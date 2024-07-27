@@ -14,5 +14,5 @@
 		"source.organizeImports.biome": "explicit",
 		"quickfix.biome": "explicit"
 	},
-	"cSpell.words": ["actionsheet", "bottomsheet", "gluestack", "hstack", "nativewind", "Pressable", "vstack"]
+	"cSpell.words": ["actionsheet", "bottomsheet", "gluestack", "hstack", "nativewind", "POSTHOG", "Pressable", "vstack"]
 }

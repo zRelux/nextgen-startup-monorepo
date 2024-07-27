@@ -1,0 +1,44 @@
+diff --git a/node_modules/@bittingz/expo-widgets/plugin/build/ios/withPodfile.js b/node_modules/@bittingz/expo-widgets/plugin/build/ios/withPodfile.js
+index 49193c1..a802e0d 100644
+--- a/node_modules/@bittingz/expo-widgets/plugin/build/ios/withPodfile.js
++++ b/node_modules/@bittingz/expo-widgets/plugin/build/ios/withPodfile.js
+@@ -73,7 +73,7 @@ end
+         tag: "app_ext_fix",
+         src: podFileContent,
+         newSrc: `
+-        config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
++        config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = resource_bundle_target.name == 'Sentry' ? 'YES' : 'No'
+         `,
+         anchor: /resource_bundle_target.build_configurations.each do \|config\|/,
+         offset: 1,
+@@ -85,7 +85,7 @@ end
+         newSrc: ` installer.pods_project.targets.each do |target|
+         target.build_configurations.each do |config|
+           config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+-          config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'        
++          config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = target.name == 'Sentry' ? 'YES' : 'No'  
+         end
+       end`,
+         anchor: /post_install do \|installer\|/,
+diff --git a/node_modules/@bittingz/expo-widgets/plugin/src/ios/withPodfile.ts b/node_modules/@bittingz/expo-widgets/plugin/src/ios/withPodfile.ts
+index 742048d..53ff0cc 100644
+--- a/node_modules/@bittingz/expo-widgets/plugin/src/ios/withPodfile.ts
++++ b/node_modules/@bittingz/expo-widgets/plugin/src/ios/withPodfile.ts
+@@ -57,7 +57,7 @@ end
+     tag: "app_ext_fix",
+     src: podFileContent,
+     newSrc: `
+-        config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
++        config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = resource_bundle_target.name == 'Sentry' ? 'YES' : 'No'
+         `,
+     anchor: /resource_bundle_target.build_configurations.each do \|config\|/,
+     offset: 1,
+@@ -70,7 +70,7 @@ end
+     newSrc: ` installer.pods_project.targets.each do |target|
+         target.build_configurations.each do |config|
+           config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+-          config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'        
++          config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = target.name == 'Sentry' ? 'YES' : 'No' 
+         end
+       end`,
+     anchor: /post_install do \|installer\|/,

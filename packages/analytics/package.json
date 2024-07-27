@@ -1,9 +1,28 @@
 {
 	"name": "@monorepo/analytics",
 	"version": "1.0.0",
-	"main": "index.ts",
+	"main": "index.tsx",
+	"exports": {
+		".": {
+			"import": "./index.tsx",
+			"require": "./index.tsx"
+		},
+		"./server": {
+			"import": "./index.server.ts",
+			"require": "./index.server.ts"
+		}
+	},
 	"scripts": {
 		"type:check": "tsc --noEmit",
 		"lint:check": "bunx @biomejs/biome lint ."
+	},
+	"dependencies": {
+		"expo-application": "^5.9.1",
+		"expo-device": "^6.0.2",
+		"expo-file-system": "^17.0.1",
+		"expo-localization": "^15.0.3",
+		"posthog-js": "^1.148.0",
+		"posthog-node": "^4.0.1",
+		"posthog-react-native": "^3.1.1"
 	}
 }

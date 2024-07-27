@@ -1,24 +1,32 @@
 {
-	"name": "startup-monorepo",
-	"version": "1.0.0",
-	"type": "module",
-	"private": true,
-	"workspaces": ["packages/*", "apps/*"],
-	"scripts": {
-		"app:web": "cd apps/app && bun run web",
-		"app:ios": "cd apps/app && bun run ios",
-		"app:android": "cd apps/app && bun run android",
-		"type:check": "tsc ./**/*.{ts,tsx} --noEmit",
-		"lint": "bunx @biomejs/biome check .",
-		"lint:fix": "bunx @biomejs/biome check --write --unsafe .",
-		"format": "bunx @biomejs/biome format .",
-		"format:fix": "bunx biome format --write .",
-		"postinstall": "patch-package"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.8.3",
-		"@types/bun": "latest",
-		"typescript": "^5.5.3"
-	},
-	"trustedDependencies": ["@biomejs/biome", "@gluestack-ui/nativewind-utils", "@monorepo/bff", "core-js", "esbuild"]
+  "name": "startup-monorepo",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "app:web": "cd apps/app && bun run web",
+    "app:ios": "cd apps/app && bun run ios",
+    "app:android": "cd apps/app && bun run android",
+    "type:check": "tsc ./**/*.{ts,tsx} --noEmit",
+    "lint": "bunx @biomejs/biome check .",
+    "lint:fix": "bunx @biomejs/biome check --write --unsafe .",
+    "format": "bunx @biomejs/biome format .",
+    "format:fix": "bunx biome format --write .",
+    "postinstall": "patch-package"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/bun": "latest",
+    "typescript": "^5.5.4"
+  },
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "@gluestack-ui/nativewind-utils",
+    "@monorepo/bff",
+    "@sentry/cli",
+    "@sentry/profiling-node",
+    "core-js",
+    "esbuild"
+  ]
 }
