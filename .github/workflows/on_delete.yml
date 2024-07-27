@@ -29,7 +29,7 @@ jobs:
       - name: Get number of commits
         id: get_number_of_commits
         run: |
-          echo "BUILD_NUMBER=$(git rev-list --count HEAD)" >> $GITHUB_ENV
+          echo "EXPO_PUBLIC_BUILD_NUMBER=$(git rev-list --count HEAD)" >> $GITHUB_ENV
 
       - name: Delete branch on expo after merge
         run: |
@@ -40,4 +40,4 @@ jobs:
           EAS_TOKEN: ${{ secrets.EXPO_TOKEN }}
           EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
           EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
-          BUILD_NUMBER: ${{ env.BUILD_NUMBER }}
+          EXPO_PUBLIC_BUILD_NUMBER: ${{ env.EXPO_PUBLIC_BUILD_NUMBER }}

@@ -6,5 +6,5 @@
 			"@/*": ["./src/*", "../../packages/design-system/*"]
 		}
 	},
-	"include": ["**/*.ts", "**/*.tsx", "index.io.jss.js", "nativewind-end.d.ts"]
+	"include": ["**/*.ts", "**/*.tsx", "index.io.jss.js", "nativewind-end.d.ts", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }

@@ -1,6 +1,11 @@
 {
 	"name": "app",
 	"version": "1.0.0",
+	"react-native": {
+		"ios": "index.ios.js",
+		"android": "index.android.js",
+		"web": "index.web.js"
+	},
 	"scripts": {
 		"clip": "expo run:ios --scheme appClip",
 		"build": "expo prebuild",

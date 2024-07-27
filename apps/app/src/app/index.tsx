@@ -1,3 +1,4 @@
+import { useAppRoutingSetup } from "@/hooks/useAppRouting";
 import {
 	AlertDialog,
 	AlertDialogBackdrop,
@@ -16,6 +17,7 @@ import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Page() {
+	useAppRoutingSetup();
 	return (
 		<View className="flex flex-1">
 			<Header />

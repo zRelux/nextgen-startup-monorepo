@@ -2,6 +2,11 @@
 	"name": "@monorepo/analytics",
 	"version": "1.0.0",
 	"main": "index.tsx",
+	"react-native": {
+		"ios": ".index.tsx",
+		"android": ".index.tsx",
+		"web": ".index.web.tsx"
+	},
 	"exports": {
 		".": {
 			"import": "./index.tsx",

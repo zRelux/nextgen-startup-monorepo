@@ -37,7 +37,7 @@ const plugins: ExpoConfig["plugins"] = [
 		{
 			ios: {
 				src: "./widgets/ios",
-				mode: "development",
+				mode: process.env.EAS_BUILD_PROFILE === "development" ? "development" : "production",
 				moduleDependencies: ["MyData.swift", "LogHandler.swift"],
 			},
 			android: {
@@ -142,14 +142,10 @@ export const createAppConfig = ({
 			eas: {
 				projectId: configToUse.projectId,
 			},
-			BUILD_NUMBER: process.env.BUILD_NUMBER,
-			ENVIRONMENT: process.env.EAS_BUILD_PROFILE,
-			APPLE_SUBSCRIPTION_KEY: process.env.APPLE_SUBSCRIPTION_KEY,
-			GOOGLE_SUBSCRIPTION_KEY: process.env.GOOGLE_SUBSCRIPTION_KEY,
 		},
 		android: {
 			package: configToUse.identifier,
-			versionCode: Number.parseInt(process.env.BUILD_NUMBER || "0", 10),
+			versionCode: Number.parseInt(process.env.EXPO_PUBLIC_BUILD_NUMBER || "0", 10),
 			adaptiveIcon: {
 				foregroundImage: "./assets/adaptive-icon.png",
 				backgroundColor: "",
@@ -159,7 +155,7 @@ export const createAppConfig = ({
 			config: {
 				usesNonExemptEncryption: false,
 			},
-			buildNumber: process.env.BUILD_NUMBER,
+			buildNumber: process.env.EXPO_PUBLIC_BUILD_NUMBER,
 			bundleIdentifier: configToUse.identifier,
 			infoPlist: {
 				CADisableMinimumFrameDurationOnPhone: true,

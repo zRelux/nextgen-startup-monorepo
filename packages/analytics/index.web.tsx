@@ -2,9 +2,9 @@ import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 
 //@ts-ignore Ts conflicts with Biome
-posthog.init(process.env.POSTHOG_CLIENT, {
+posthog.init(process.env.EXPO_PUBLIC_POSTHOG_CLIENT, {
 	//@ts-ignore Ts conflicts with Biome
-	api_host: process.env.POSTHOG_SERVER || "https://eu.i.posthog.com",
+	api_host: process.env.EXPO_PUBLIC_POSTHOG_SERVER || "https://eu.i.posthog.com",
 });
 
 type AnalyticsProviderProps = {

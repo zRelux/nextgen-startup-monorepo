@@ -35,7 +35,7 @@ jobs:
       - name: Get number of commits
         id: get_number_of_commits
         run: |
-          echo "BUILD_NUMBER=$(git rev-list --count HEAD)" >> $GITHUB_ENV
+          echo "EXPO_PUBLIC_BUILD_NUMBER=$(git rev-list --count HEAD)" >> $GITHUB_ENV
 
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
@@ -47,5 +47,5 @@ jobs:
           UNSPLASH_API: ${{ secrets.UNSPLASH_API }}
           WEATHER_API: ${{ secrets.WEATHER_API }}
           APPLE_SUBSCRIPTION_KEY: ${{ secrets.APPLE_SUBSCRIPTION_KEY }}
-          BUILD_NUMBER: ${{ env.BUILD_NUMBER }}
+          EXPO_PUBLIC_BUILD_NUMBER: ${{ env.EXPO_PUBLIC_BUILD_NUMBER }}
           ENVIRONMENT: "staging"

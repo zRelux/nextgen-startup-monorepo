@@ -1,4 +1,3 @@
-import { AnalyticsProvider } from "@monorepo/analytics";
 import { GluestackUIProvider } from "@monorepo/design-system";
 import { App as ExpoApp } from "expo-router/build/qualified-entry";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -11,13 +10,11 @@ initSentry();
 
 function App() {
 	return (
-		<AnalyticsProvider>
-			<GluestackUIProvider>
-				<SafeAreaProvider>
-					<ExpoApp />
-				</SafeAreaProvider>
-			</GluestackUIProvider>
-		</AnalyticsProvider>
+		<GluestackUIProvider>
+			<SafeAreaProvider>
+				<ExpoApp />
+			</SafeAreaProvider>
+		</GluestackUIProvider>
 	);
 }
 
