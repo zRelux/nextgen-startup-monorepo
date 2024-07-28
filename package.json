@@ -13,14 +13,26 @@
 		"lint:fix": "bunx @biomejs/biome check --write --unsafe .",
 		"format": "bunx @biomejs/biome format .",
 		"format:fix": "bunx biome format --write .",
-		"test": "exit 0",
-		"postinstall": "patch-package"
+		"test": "bun run --filter '@monorepo/*' test",
+		"postinstall": "patch-package",
+		"expose:ollama": "bunx localtunnel --port 11434 --local-host localhost"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
+		"@testing-library/dom": "^10.4.0",
+		"@testing-library/react": "^16.0.0",
+		"@testing-library/react-native": "^12.5.2",
 		"@types/bun": "latest",
+		"@types/jest": "^29.5.12",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"jest": "^29.7.0",
+		"jest-expo": "^51.0.3",
+		"nitro-test-utils": "^0.6.0",
 		"railway": "^2.0.17",
-		"typescript": "^5.5.4"
+		"ts-jest": "^29.2.3",
+		"typescript": "^5.5.4",
+		"vitest": "^2.0.4"
 	},
 	"trustedDependencies": [
 		"@biomejs/biome",

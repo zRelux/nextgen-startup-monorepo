@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"scripts": {
 		"type:check": "tsc --noEmit",
-		"lint:check": "bunx @biomejs/biome lint ."
+		"lint:check": "bunx @biomejs/biome lint .",
+		"test": "jest"
 	},
 	"exports": {
 		".": {

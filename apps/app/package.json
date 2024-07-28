@@ -15,7 +15,8 @@
 		"web": "DARK_MODE=class expo start --web",
 		"type:check": "tsc --noEmit",
 		"lint:check": "bunx @biomejs/biome lint .",
-		"update": "eas update && npx sentry-expo-upload-sourcemaps dist"
+		"update": "eas update && npx sentry-expo-upload-sourcemaps dist",
+		"test": "jest"
 	},
 	"dependencies": {
 		"@bittingz/expo-widgets": "^2.1.0",
