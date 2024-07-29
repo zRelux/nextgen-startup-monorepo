@@ -47,7 +47,7 @@
 		"@rn-primitives/types": "~1.0.3",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.0",
-		"lucide-react-native": "^0.378.0",
+		"lucide-react-native": "^0.417.0",
 		"tailwind-merge": "^2.2.1",
 		"@expo/html-elements": "^0.10.1",
 		"@gluestack-ui/accordion": "^1.0.5",
