@@ -16,4 +16,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OLLAMA_ADDRESS: ${{ secrets.OLLAMA_ADDRESS }}
-          exclude: "yarn.lock,dist/**"
+          LLM_MODEL: "llama3.1:latest"
+          exclude: "bun.lock,package.json"
