@@ -32,7 +32,8 @@ jobs:
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
         with:
-          command: cd apps/app && eas update --channel "${{ github.head_ref }}" --message "${{ github.event.pull_request.title }}"
+          working-directory: apps/app
+          command: eas update --channel "${{ github.head_ref }}" --message "${{ github.event.pull_request.title }}"
         env:
           GMAPS_API: ${{ secrets.GMAPS_API }}
           GOOGLE_SUBSCRIPTION_KEY: ${{ secrets.GOOGLE_SUBSCRIPTION_KEY }}
