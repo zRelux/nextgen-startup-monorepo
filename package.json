@@ -15,7 +15,7 @@
 		"format:fix": "bunx biome format --write .",
 		"test": "bun run --filter '@monorepo/*' test",
 		"postinstall": "patch-package",
-		"expose:ollama": "bunx localtunnel --port 11434 --local-host localhost"
+		"expose:ollama": "bunx localtunnel --port 11434 --local-host localhost --subdomain monorepo"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
@@ -44,6 +44,7 @@
 		"esbuild"
 	],
 	"dependencies": {
-		"dotenv": "^16.4.5"
+		"dotenv": "^16.4.5",
+		"openai": "^4.53.2"
 	}
 }
