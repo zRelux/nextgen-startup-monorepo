@@ -42,7 +42,7 @@ function Content() {
 							Welcome to Project ACME
 						</Text>
 						<Text className="mx-auto max-w-[700px] text-lg text-center text-gray-500 md:text-xl sm:text-blue-500">
-							Discover and collaborate on monderpo. Explore our services now.
+							Discover and collaborate on monorepo. Explore our services now.
 						</Text>
 
 						<View className="gap-4">
