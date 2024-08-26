@@ -21,7 +21,7 @@
 		"@sentry/node": "^8.19.0",
 		"@sentry/profiling-node": "^8.19.0",
 		"arctic": "^1.9.2",
-		"drizzle-orm": "^0.32.0",
+		"drizzle-orm": "^0.33.0",
 		"drizzle-zod": "^0.5.1",
 		"lucia": "^3.2.0",
 		"pg": "^8.12.0"
